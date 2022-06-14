@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const express = require("express");
-
+const cors = require('cors');
 const app = express();
 
 
@@ -10,7 +10,9 @@ mongoose.connect("mongodb+srv://rishiwhite11:nataliE@2447@cluster0.urkee.mongodb
   useUnifiedTopology: true,
 });
 
+
 const db = mongoose.connection;
+app.use(cors());
 db.once("open", async () => {
     if ((await Music.countDocuments().exec()) > 0) {
         return;
