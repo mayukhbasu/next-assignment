@@ -8,9 +8,6 @@ interface SongDetails {
 }
 
 
-type SongDetailsState =  {
-    songs: SongDetails[]
-}
 
 
 
