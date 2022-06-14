@@ -64,7 +64,7 @@ const paginatedResults = () => {
 }
 app.get("/users", paginatedResults(), (req, res) => {
     res.json(res.paginatedResults);
-  });
+});
 
 
 console.log("Server Started!");
