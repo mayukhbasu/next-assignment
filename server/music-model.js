@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const musicSchema = new mongoose.Schema({
-    _id: {
+    index: {
         type: Number,
         required: true
     },
@@ -11,11 +11,11 @@ const musicSchema = new mongoose.Schema({
     },
     artist: {
         type: String,
-        required: number
+        required: true
     },
     album: {
         type: String,
-        required: number 
+        required: true 
     }
 });
 
