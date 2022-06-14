@@ -42,8 +42,13 @@ const paginatedResults = () => {
         const results = {};
         console.log(searchText);
         try {
-          results.results = await Music.find()
-            .or([{ song: searchText }, { artist: searchText }, { album: searchText }])
+          results.results = await Music.find({
+                $or: [
+                    { 'song': { '$regex': searchText, '$options': 'i' } },
+                    { 'album': { '$regex': searchText, '$options': 'i' } },
+                    { 'artist': { '$regex': searchText, '$options': 'i' } }
+                ]
+              })
             .sort({ _id: 1 })
             .limit(limit)
             .skip(skipIndex)
