@@ -5,12 +5,21 @@ import SearchResults from '../components/SearchResults';
 import { SongDetailsState } from '../store/actionTypes';
 
 const SearchContainer: React.FC = () => {
+    const initialSongs:SongDetails[] = [];
     const songs: SongDetails[]  =  useSelector((state:SongDetailsState) => state.songs, shallowEqual) || [];
-    console.log(songs)
+    let updatedSongs = [...initialSongs, ...songs];
+
+    const loadMoreData = () => {
+        console.log("Load More Data")
+    }
+
+    const searchSongs = () => {
+        
+    }
     return (
         <>
-           <Search/>
-           <SearchResults/>
+           <Search searchSongs={searchSongs}/>
+           <SearchResults songs={updatedSongs} sendRequest={loadMoreData}/>
         </>
     );
 };

@@ -1,0 +1,9 @@
+.songs-table{
+    overflow-y: auto;
+    width: 80%;
+    margin:50px auto;
+    max-height: 60vh;
+}
+i {
+    cursor: pointer;
+}
