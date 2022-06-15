@@ -1,17 +1,23 @@
 import React, { FormEvent} from 'react';
+import { shallowEqual, useSelector } from 'react-redux';
+import { SongDetailsState } from '../store/actionTypes';
 
 import './SearchResults.css';
 
 type ShowSongsProps = {
     songs: SongDetails[]
-    sendRequest: () => void
+    sendRequest: (search:string, pageNo: number) => void
 }
 const SearchResults: React.FC<ShowSongsProps> = ({songs, sendRequest}) => {
+    const songSearch = useSelector((state:SongDetailsState) => state.searchString, shallowEqual) || '';
+    const pageNo = useSelector((state:SongDetailsState) => state.pageNo, shallowEqual) || 1;
     const loadMoreData = (e: FormEvent) => {
+        e.preventDefault();
         const bottom = e.currentTarget.scrollHeight - e.currentTarget.scrollTop
          === e.currentTarget.clientHeight;
         if(bottom){
-            sendRequest();
+            let newPageNo: number = pageNo + 1;
+            sendRequest(songSearch, newPageNo);
         }
     }
     return (

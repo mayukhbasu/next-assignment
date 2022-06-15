@@ -8,10 +8,14 @@ export function findSongs(songSearch: string, pageNo:number = 1){
             type: ActionType.SEARCH_SONGS_PENDING
         });
         try {
+            
             const {results} =  (await axios.get(`http://localhost:3000/users?page=${pageNo}&limit=10&search=${songSearch}`)).data;
             dispatch({
                 type: ActionType.SEARCH_SONGS_SUCCESS,
-                payload: results
+                payload: results,
+                pageNo: pageNo,
+                searchString: songSearch
+
             })
         } catch(err:any){
             dispatch({

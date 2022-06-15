@@ -9,7 +9,9 @@ export enum ActionType {
 export interface SongDetailsState {
     songs?: SongDetails[];
     loading: boolean;
-    error?: string | null
+    error?: string | null;
+    pageNo: number;
+    searchString?: string;
 }
 
 export interface ErrorMessage {
@@ -23,6 +25,8 @@ interface actionPending {
 interface actionSuccess {
     type: ActionType.SEARCH_SONGS_SUCCESS;
     payload: SongDetails[];
+    pageNo: number;
+    searchString?: string;
 }
 
 interface actionFail {

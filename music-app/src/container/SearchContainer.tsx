@@ -1,25 +1,24 @@
-import React from 'react';
-import { shallowEqual, useSelector } from 'react-redux';
+import React, { Dispatch, useCallback} from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import Search from '../components/Search';
 import SearchResults from '../components/SearchResults';
+import { findSongs } from '../store/actionCreators';
 import { SongDetailsState } from '../store/actionTypes';
 
 const SearchContainer: React.FC = () => {
-    const initialSongs:SongDetails[] = [];
+    const dispatch: Dispatch<any> = useDispatch()
     const songs: SongDetails[]  =  useSelector((state:SongDetailsState) => state.songs, shallowEqual) || [];
-    let updatedSongs = [...initialSongs, ...songs];
-
-    const loadMoreData = () => {
-        console.log("Load More Data")
-    }
-
-    const searchSongs = () => {
-        
-    }
+    const loadMoreData = (searchString: string, pageNo:number) => dispatch(findSongs(searchString, pageNo))
+   
+    const searchSongs = useCallback(
+        (searchString: string) => dispatch(findSongs(searchString)),
+        [dispatch]
+      )
+    
     return (
         <>
            <Search searchSongs={searchSongs}/>
-           <SearchResults songs={updatedSongs} sendRequest={loadMoreData}/>
+           <SearchResults songs={songs} sendRequest={loadMoreData}/>
         </>
     );
 };
