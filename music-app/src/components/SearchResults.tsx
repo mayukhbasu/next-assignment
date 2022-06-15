@@ -13,10 +13,11 @@ const SearchResults: React.FC<ShowSongsProps> = ({songs, sendRequest}) => {
     const pageNo = useSelector((state:SongDetailsState) => state.pageNo, shallowEqual);
     const loadMoreData = (e: FormEvent) => {
         e.preventDefault();
+        let newPageNo: number = pageNo + 1;
         const bottom = e.currentTarget.scrollHeight - e.currentTarget.scrollTop
-         === e.currentTarget.clientHeight;
+         <= e.currentTarget.clientHeight + 2 ;
         if(bottom){
-            let newPageNo: number = pageNo + 1;
+            
             sendRequest(songSearch, newPageNo);
         }
     }

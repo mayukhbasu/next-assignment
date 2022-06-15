@@ -11,7 +11,7 @@ const SearchContainer: React.FC = () => {
     const loadMoreData = (searchString: string, pageNo:number) => dispatch(findSongs(searchString, false, pageNo))
    
     const searchSongs = useCallback(
-        (searchString: string) => dispatch(findSongs(searchString)),
+        (searchString: string) => dispatch(findSongs(searchString, true, 1)),
         [dispatch]
       )
     
