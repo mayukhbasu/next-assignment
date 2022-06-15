@@ -10,7 +10,7 @@ type ShowSongsProps = {
 }
 const SearchResults: React.FC<ShowSongsProps> = ({songs, sendRequest}) => {
     const songSearch = useSelector((state:SongDetailsState) => state.searchString, shallowEqual) || '';
-    const pageNo = useSelector((state:SongDetailsState) => state.pageNo, shallowEqual) || 1;
+    const pageNo = useSelector((state:SongDetailsState) => state.pageNo, shallowEqual);
     const loadMoreData = (e: FormEvent) => {
         e.preventDefault();
         const bottom = e.currentTarget.scrollHeight - e.currentTarget.scrollTop

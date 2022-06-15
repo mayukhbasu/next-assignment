@@ -24,7 +24,9 @@ export const songsReducer = (state: SongDetailsState = initialState, action: Act
                 ...state,
                 loading: false,
                 songs: action.newSearch? ([] as SongDetails[]).concat(action.payload): state.songs?.concat(action.payload),
-                error: null
+                error: null,
+                pageNo: action.pageNo,
+                searchString: action.searchString
             }
         case ActionType.SEARCH_SONGS_FAILURE:
             return {
