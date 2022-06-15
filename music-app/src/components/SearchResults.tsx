@@ -14,7 +14,7 @@ const SearchResults: React.FC<ShowSongsProps> = ({songs, sendRequest}) => {
     const loadMoreData = (e: FormEvent) => {
         e.preventDefault();
         const bottom = e.currentTarget.scrollHeight - e.currentTarget.scrollTop
-         === e.currentTarget.clientHeight;
+         <= e.currentTarget.clientHeight + 5;
         if(bottom){
             let newPageNo: number = pageNo + 1;
             sendRequest(songSearch, newPageNo);
