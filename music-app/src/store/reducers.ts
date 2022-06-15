@@ -1,10 +1,6 @@
-import { Action, ActionType } from "./actionTypes";
+import { Action, ActionType, SongDetailsState } from "./actionTypes";
 
-interface SongDetailsState {
-    songs?: SongDetails[];
-    loading: boolean;
-    error?: string | null
-}
+
 
 const initialState = {
     songs: [],

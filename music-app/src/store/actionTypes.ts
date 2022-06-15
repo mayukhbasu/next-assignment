@@ -6,6 +6,12 @@ export enum ActionType {
 
 }
 
+export interface SongDetailsState {
+    songs?: SongDetails[];
+    loading: boolean;
+    error?: string | null
+}
+
 export interface ErrorMessage {
     message: string;
 }

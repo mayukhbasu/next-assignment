@@ -1,7 +1,6 @@
-//import { SEARCH_SONGS } from "./actionTypes";
 import axios from "axios";
 import { Dispatch } from "redux";
-import { Action, ActionType, ErrorMessage } from "./actionTypes";
+import { Action, ActionType} from "./actionTypes";
 
 export function findSongs(songSearch: string, pageNo:number = 1){
     return async(dispatch: Dispatch<Action>) => {
