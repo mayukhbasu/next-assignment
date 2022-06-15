@@ -23,7 +23,7 @@ export const songsReducer = (state: SongDetailsState = initialState, action: Act
             return {
                 ...state,
                 loading: false,
-                songs: action.newSearch? ([] as SongDetails[]).concat(action.payload): state.songs?.concat(action.payload),
+                songs: action.newSearch? ([] as SongDetails[]).concat(action.payload) : state.songs?.concat(action.payload),
                 error: null,
                 pageNo: action.pageNo,
                 searchString: action.searchString
