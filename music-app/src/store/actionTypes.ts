@@ -12,6 +12,7 @@ export interface SongDetailsState {
     error?: string | null;
     pageNo: number;
     searchString?: string;
+    newSearch?: boolean;
 }
 
 export interface ErrorMessage {
@@ -27,6 +28,7 @@ interface actionSuccess {
     payload: SongDetails[];
     pageNo: number;
     searchString?: string;
+    newSearch?: boolean;
 }
 
 interface actionFail {

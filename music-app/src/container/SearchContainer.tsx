@@ -8,7 +8,7 @@ import { SongDetailsState } from '../store/actionTypes';
 const SearchContainer: React.FC = () => {
     const dispatch: Dispatch<any> = useDispatch()
     const songs: SongDetails[]  =  useSelector((state:SongDetailsState) => state.songs, shallowEqual) || [];
-    const loadMoreData = (searchString: string, pageNo:number) => dispatch(findSongs(searchString, pageNo))
+    const loadMoreData = (searchString: string, pageNo:number) => dispatch(findSongs(searchString, false, pageNo))
    
     const searchSongs = useCallback(
         (searchString: string) => dispatch(findSongs(searchString)),

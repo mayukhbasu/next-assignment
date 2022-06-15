@@ -2,7 +2,7 @@ import axios from "axios";
 import { Dispatch } from "redux";
 import { Action, ActionType} from "./actionTypes";
 
-export function findSongs(songSearch: string, pageNo:number = 1){
+export function findSongs(songSearch: string,newSearch: boolean = true,pageNo:number = 1){
     return async(dispatch: Dispatch<Action>) => {
         dispatch({
             type: ActionType.SEARCH_SONGS_PENDING
@@ -14,8 +14,8 @@ export function findSongs(songSearch: string, pageNo:number = 1){
                 type: ActionType.SEARCH_SONGS_SUCCESS,
                 payload: results,
                 pageNo: pageNo,
-                searchString: songSearch
-
+                searchString: songSearch,
+                newSearch
             })
         } catch(err:any){
             dispatch({

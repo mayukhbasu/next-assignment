@@ -7,7 +7,8 @@ const initialState:SongDetailsState = {
     loading: false,
     error: null,
     pageNo: 1,
-    searchString: ""
+    searchString: "",
+    newSearch: true
 }
 
 export const songsReducer = (state: SongDetailsState = initialState, action: Action):SongDetailsState  => {
@@ -18,10 +19,11 @@ export const songsReducer = (state: SongDetailsState = initialState, action: Act
                 loading: true,
             }
         case ActionType.SEARCH_SONGS_SUCCESS:
+            console.log(action.payload);
             return {
                 ...state,
                 loading: false,
-                songs: state.songs?.concat(action.payload),
+                songs: action.newSearch? ([] as SongDetails[]).concat(action.payload): state.songs?.concat(action.payload),
                 error: null
             }
         case ActionType.SEARCH_SONGS_FAILURE:
