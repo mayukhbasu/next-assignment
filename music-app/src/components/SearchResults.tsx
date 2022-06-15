@@ -11,7 +11,9 @@ type ShowSongsProps = {
 const SearchResults: React.FC<ShowSongsProps> = ({songs, sendRequest}) => {
     const songSearch = useSelector((state:SongDetailsState) => state.searchString, shallowEqual) || '';
     const pageNo = useSelector((state:SongDetailsState) => state.pageNo, shallowEqual);
+    let search;
     const loadMoreData = (e: FormEvent) => {
+        
         e.preventDefault();
         let newPageNo: number = pageNo + 1;
         const bottom = e.currentTarget.scrollHeight - e.currentTarget.scrollTop
@@ -20,31 +22,37 @@ const SearchResults: React.FC<ShowSongsProps> = ({songs, sendRequest}) => {
             
             sendRequest(songSearch, newPageNo);
         }
+        
+    }
+    if(songs.length > 0){
+        search =  <table>
+        <thead>
+        <tr>
+            <th>Song</th>
+            <th>Artist</th>
+            <th>Album</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            {
+                songs.map(song => (
+                    <tr key={song._id}>
+                        <td>{song.song}</td>
+                        <td>{song.artist}</td>
+                        <td>{song.album}</td>
+                    </tr>
+                ))
+            }
+        </tbody>
+    </table>
+    } else {
+        search = <h2>Sorry No Results Found</h2>
     }
     return (
         <>
             <div className='songs-table' onScroll={loadMoreData}>
-            <table>
-                <thead>
-                <tr>
-                    <th>Song</th>
-                    <th>Artist</th>
-                    <th>Album</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                    {
-                        songs.map(song => (
-                            <tr key={song._id}>
-                                <td>{song.song}</td>
-                                <td>{song.artist}</td>
-                                <td>{song.album}</td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+                {search}
             </div>
            
         </>
