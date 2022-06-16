@@ -5,11 +5,14 @@ const app = express();
 
 
 const Music = require('./music-model');
-mongoose.connect("mongodb+srv://rishiwhite11:nataliE@2447@cluster0.urkee.mongodb.net/?retryWrites=true&w=majority", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
+// mongoose.connect("mongodb+srv://rishiwhite11:nataliE@2447@cluster0.urkee.mongodb.net/?retryWrites=true&w=majority", {
+// //   useNewUrlParser: true,
+// //   useUnifiedTopology: true,
+// });
+mongoose.connect('mongodb://localhost:27017/music', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
 
 const db = mongoose.connection;
 app.use(cors());

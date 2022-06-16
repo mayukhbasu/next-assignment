@@ -15,11 +15,11 @@ const SearchResults: React.FC<ShowSongsProps> = ({songs, sendRequest}) => {
     const loadMoreData = (e: FormEvent) => {
         
         e.preventDefault();
-        let newPageNo: number = pageNo + 1;
+        console.warn(e.currentTarget.scrollHeight - e.currentTarget.scrollTop - e.currentTarget.clientHeight );
         const bottom = e.currentTarget.scrollHeight - e.currentTarget.scrollTop
-         <= e.currentTarget.clientHeight + 2 ;
+         <= e.currentTarget.clientHeight + 0.6 ;
         if(bottom){
-            
+            let newPageNo: number = pageNo + 1;
             sendRequest(songSearch, newPageNo);
         }
         
@@ -47,7 +47,7 @@ const SearchResults: React.FC<ShowSongsProps> = ({songs, sendRequest}) => {
         </tbody>
     </table>
     } else {
-        search = <h2>Sorry No Results Found</h2>
+        search = <h4>Sorry No Results Found</h4>
     }
     return (
         <>

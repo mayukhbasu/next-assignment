@@ -7,3 +7,8 @@
 i {
     cursor: pointer;
 }
+
+ th {
+    border: none;
+    width: 10%;
+}
