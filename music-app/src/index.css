@@ -10,9 +10,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./images/background.jpeg');
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+img {
+  width: 150px;
+  height: 200px;
+  
 }

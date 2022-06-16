@@ -28,7 +28,7 @@ const Search:React.FC<SearchProps> = ({searchSongs}) => {
                         <div className="input-field col s12">
                             
                             <input type="text" id='searchSong' className="validate" value={songSearch}
-                            onChange={changeSong} data-testid="searchSong" placeholder="Search Songs.. (Min 3 Characters)" minLength={3}/>
+                            onChange={changeSong} data-testid="searchSong" placeholder="Search"/>
                             
                             {
                                 iconShow && <i data-testid="findSong" className="material-icons prefix" onClick={findSongs}>search</i>

@@ -1,6 +1,7 @@
 import React, { FormEvent} from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { SongDetailsState } from '../store/actionTypes';
+import HomePage from './HomePage';
 
 import './SearchResults.css';
 
@@ -24,7 +25,7 @@ const SearchResults: React.FC<ShowSongsProps> = ({songs, sendRequest}) => {
         }
         
     }
-    if(songs.length > 0){
+    if(songs.length > 0 && songSearch){
         search =  <table>
         <thead>
         <tr>
@@ -46,14 +47,21 @@ const SearchResults: React.FC<ShowSongsProps> = ({songs, sendRequest}) => {
             }
         </tbody>
     </table>
-    } else {
-        search = <h4>Sorry No Results Found</h4>
+    } else if(songSearch) {
+        search = <>
+            <i className="material-icons">search</i>
+            <h6>Sorry No Results Found</h6>
+        </>
+        
     }
     return (
         <>
             <div className='songs-table' onScroll={loadMoreData}>
                 {search}
             </div>
+            {
+                !songSearch && <HomePage/>
+            }
            
         </>
     );

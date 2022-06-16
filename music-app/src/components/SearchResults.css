@@ -3,9 +3,11 @@
     width: 80%;
     margin:50px auto;
     max-height: 60vh;
+    color: white;
 }
 i {
     cursor: pointer;
+    color: white;
 }
 
  th {

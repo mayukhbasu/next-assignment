@@ -1,0 +1,10 @@
+.card-action span {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: fantasy;
+    color: gray;
+}
+
+.row {
+    margin-left: 55px;
+}
