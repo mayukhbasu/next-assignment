@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const cors = require('cors');
+
+const rateLimiterUsingThirdParty = require('./rate-limiter');
 const app = express();
 
 
@@ -9,13 +11,11 @@ mongoose.connect("mongodb+srv://rishiwhite11:nataliE@2447@cluster0.urkee.mongodb
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-// mongoose.connect('mongodb://localhost:27017/music', {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// })
+
 
 const db = mongoose.connection;
 app.use(cors());
+app.use(rateLimiterUsingThirdParty);
 db.once("open", async () => {
     if ((await Music.countDocuments().exec()) > 0) {
         return;
@@ -85,4 +85,4 @@ app.get("/users", paginatedResults(), (req, res) => {
 
 
 console.log("Server Started!");
-app.listen(3000);
+app.listen(4000);

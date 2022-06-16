@@ -3,13 +3,14 @@ import { Dispatch } from "redux";
 import { Action, ActionType} from "./actionTypes";
 
 export function findSongs(songSearch: string,newSearch: boolean,pageNo:number){
+    
     return async(dispatch: Dispatch<Action>) => {
         dispatch({
             type: ActionType.SEARCH_SONGS_PENDING
         });
         try {
             
-            const {results} =  (await axios.get(`http://localhost:3000/users?page=${pageNo}&limit=10&search=${songSearch}`)).data;
+            const {results} =  (await axios.get(process.env.REACT_APP_API+`${pageNo}&limit=10&search=${songSearch}`)).data;
             dispatch({
                 type: ActionType.SEARCH_SONGS_SUCCESS,
                 payload: results,

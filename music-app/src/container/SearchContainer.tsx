@@ -5,9 +5,11 @@ import SearchResults from '../components/SearchResults';
 import { findSongs } from '../store/actionCreators';
 import { SongDetailsState } from '../store/actionTypes';
 
+//Container component holding both search and searchResults
 const SearchContainer: React.FC = () => {
     const dispatch: Dispatch<any> = useDispatch()
     const songs: SongDetails[]  =  useSelector((state:SongDetailsState) => state.songs, shallowEqual) || [];
+    
     const loadMoreData = (searchString: string, pageNo:number) => dispatch(findSongs(searchString, false, pageNo))
    
     const searchSongs = useCallback(

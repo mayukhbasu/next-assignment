@@ -2,7 +2,6 @@ import React, { FormEvent} from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { SongDetailsState } from '../store/actionTypes';
 import HomePage from './HomePage';
-
 import './SearchResults.css';
 
 type ShowSongsProps = {
@@ -13,12 +12,14 @@ const SearchResults: React.FC<ShowSongsProps> = ({songs, sendRequest}) => {
     const songSearch = useSelector((state:SongDetailsState) => state.searchString, shallowEqual) || '';
     const pageNo = useSelector((state:SongDetailsState) => state.pageNo, shallowEqual);
     let search;
+
+    //Load more functionality with infinite scrolling
     const loadMoreData = (e: FormEvent) => {
         
         e.preventDefault();
-        console.warn(e.currentTarget.scrollHeight - e.currentTarget.scrollTop - e.currentTarget.clientHeight );
         const bottom = e.currentTarget.scrollHeight - e.currentTarget.scrollTop
          <= e.currentTarget.clientHeight + 0.6 ;
+        
         if(bottom){
             let newPageNo: number = pageNo + 1;
             sendRequest(songSearch, newPageNo);
@@ -50,7 +51,8 @@ const SearchResults: React.FC<ShowSongsProps> = ({songs, sendRequest}) => {
     } else if(songSearch) {
         search = <>
             <i className="material-icons">search</i>
-            <h6>Sorry No Results Found</h6>
+            <h6>No results found</h6>
+            <small>Try different keywords </small>
         </>
         
     }

@@ -1,3 +1,4 @@
 # next-assignment
 
-http://localhost:3000/users?page=1&limit=4&search=abc
+Installation guide and test:
+1. You should have nodejs installed in your local machine
