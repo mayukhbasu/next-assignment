@@ -6,22 +6,17 @@ type SearchProps = {
     searchSongs: (songSearch: string) => void
 }
 const Search:React.FC<SearchProps> = ({searchSongs}) => {
-    let searchIcon;
-    let M:any;
+    let iconShow: boolean = false;
     const [songSearch, setSongSearch] = useState('');
     const changeSong = (e: FormEvent<HTMLInputElement>) => {
         setSongSearch(e.currentTarget.value)
     }
-    if(songSearch.length < 3){
-        searchIcon = ''
+    if(songSearch.trim().length < 1){
+        iconShow = false
     } else {
-        
+        iconShow = true
     }
     const findSongs = () => {
-        if(songSearch.length < 3){
-            
-            return;
-        }
         searchSongs(songSearch)
     }
     return (
@@ -32,10 +27,12 @@ const Search:React.FC<SearchProps> = ({searchSongs}) => {
                     <form className="offset-s3 col s6">
                         <div className="input-field col s12">
                             
-                            <input id="text" type="email" className="validate" value={songSearch}
-                            onChange={changeSong} placeholder="Search Songs.. (Min 3 Characters)" minLength={3}/>
+                            <input type="text" id='searchSong' className="validate" value={songSearch}
+                            onChange={changeSong} data-testid="searchSong" placeholder="Search Songs.. (Min 3 Characters)" minLength={3}/>
                             
-                            <i className="material-icons prefix" onClick={findSongs}>search</i>
+                            {
+                                iconShow && <i data-testid="findSong" className="material-icons prefix" onClick={findSongs}>search</i>
+                            }
                         </div>
                     </form>
                 </div>

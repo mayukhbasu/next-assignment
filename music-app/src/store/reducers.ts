@@ -19,7 +19,6 @@ export const songsReducer = (state: SongDetailsState = initialState, action: Act
                 loading: true,
             }
         case ActionType.SEARCH_SONGS_SUCCESS:
-            console.warn(action.newSearch);
             return {
                 ...state,
                 loading: false,
