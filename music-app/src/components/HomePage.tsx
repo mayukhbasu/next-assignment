@@ -6,16 +6,13 @@ import musician from '../images/musician.jpeg'
 const HomePage = () => {
     return (
         <div>
+            <h3>Choose Your Genre</h3>
             <div className="row">
                 <div className=" offset-s1 col s4 m3">
                 <div className="card">
                     <div className="card-image">
                     <img src={metal}/>
-                    
-                    </div>
-                    
-                    <div className="card-action">
-                    <span>Metal</span>
+                    <div className="card-title">Metal</div>
                     </div>
                 </div>
                 </div>
@@ -23,23 +20,17 @@ const HomePage = () => {
                 <div className="card">
                     <div className="card-image">
                     <img src={musician}/>
-                    
+                        <div className="card-title">Country</div>
                     </div>
                     
-                    <div className="card-action">
-                    <span>Country</span>
-                    </div>
+                    
                 </div>
                 </div>
                 <div className="offset-m1 col s4 m3">
                 <div className="card">
                     <div className="card-image">
                     <img src={pop}/>
-                    
-                    </div>
-                    
-                    <div className="card-action">
-                    <span>Pop</span>
+                        <div className="card-title">Pop</div>
                     </div>
                 </div>
                 </div>
