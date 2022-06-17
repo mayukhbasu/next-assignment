@@ -2,6 +2,7 @@ import axios from "axios";
 import { Dispatch } from "redux";
 import { Action, ActionType} from "./actionTypes";
 
+//Action to provide search functionality accessing the backend API
 export function findSongs(songSearch: string,newSearch: boolean,pageNo:number){
     
     return async(dispatch: Dispatch<Action>) => {

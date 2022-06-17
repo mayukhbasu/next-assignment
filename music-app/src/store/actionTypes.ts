@@ -6,6 +6,9 @@ export enum ActionType {
 
 }
 
+//The song details initial state , sending search string, pageno and new search as a response param to 
+//send further request that is returned from store, if new search is true we are clearing the array containing
+//songs from the current store
 export interface SongDetailsState {
     songs?: SongDetails[];
     loading: boolean;

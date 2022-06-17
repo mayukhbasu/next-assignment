@@ -10,6 +10,7 @@ const SearchContainer: React.FC = () => {
     const dispatch: Dispatch<any> = useDispatch()
     const songs: SongDetails[]  =  useSelector((state:SongDetailsState) => state.songs, shallowEqual) || [];
     
+    //Load more data function connecting to action
     const loadMoreData = (searchString: string, pageNo:number) => dispatch(findSongs(searchString, false, pageNo))
    
     const searchSongs = useCallback(

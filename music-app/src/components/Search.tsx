@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, KeyboardEvent } from 'react';
 import './Search.css';
 
 
@@ -25,6 +25,15 @@ const Search:React.FC<SearchProps> = ({searchSongs}) => {
     const findSongs = () => {
         searchSongs(songSearch)
     }
+
+    //Search functionality after pressing enter
+    const findSongsAfterEnterPress = (e?: KeyboardEvent<HTMLInputElement>) => {
+        
+        if(e?.key === "Enter"){
+            e?.preventDefault();
+            searchSongs(songSearch)
+        }
+    }
     return (
         <div className='header'>
             <h4>Welcome to Harmony</h4>
@@ -33,7 +42,7 @@ const Search:React.FC<SearchProps> = ({searchSongs}) => {
                     <form className="offset-s3 col s6">
                         <div className="input-field col s12">
                             
-                            <input type="text" id='searchSong' className="validate" value={songSearch}
+                            <input type="text" id='searchSong' className="validate" value={songSearch} onKeyDown={findSongsAfterEnterPress}
                             onChange={changeSong} data-testid="searchSong" placeholder="Search"/>
                             
                             {

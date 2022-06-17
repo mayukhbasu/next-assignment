@@ -10,7 +10,7 @@ const initialState:SongDetailsState = {
     searchString: "",
     newSearch: true
 }
-
+//Reducer to update the newly fetched data into the state from the backend
 export const songsReducer = (state: SongDetailsState = initialState, action: Action):SongDetailsState  => {
     switch(action.type) {
         case ActionType.SEARCH_SONGS_PENDING:
@@ -18,6 +18,7 @@ export const songsReducer = (state: SongDetailsState = initialState, action: Act
                 ...state,
                 loading: true,
             }
+        //If new search is true, then concat action payload with blank array, else concat with the prev state
         case ActionType.SEARCH_SONGS_SUCCESS:
             return {
                 ...state,
@@ -27,6 +28,7 @@ export const songsReducer = (state: SongDetailsState = initialState, action: Act
                 pageNo: action.pageNo,
                 searchString: action.searchString
             }
+        //When error happens , returning a string containing error
         case ActionType.SEARCH_SONGS_FAILURE:
             return {
                 ...state,
